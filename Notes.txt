@@ -1,0 +1,46 @@
+Client Secret
+
+URL: https://app.tado.com/env.js
+
+Result:
+var TD = {
+    config: {
+        version: 'v994',
+        environment: 'production',
+        debugEnabled: false,
+        logEndpoint: 'https://ovihbsxusa.execute-api.eu-west-1.amazonaws.com/log/event',
+        baseUrl: 'https://my.tado.com',
+        tgaEndpoint: 'https://my.tado.com',
+        tgaRestApiEndpoint: 'https://my.tado.com/api/v1',
+        tgaRestApiV2Endpoint: 'https://my.tado.com/api/v2',
+        susiApiEndpoint: 'https://susi.tado.com/api',
+        homeBackendBaseUrl: 'https://my.tado.com/home/show',
+        hvacApiEndpoint: 'https://hvactool.tado.com',
+        hvacIncludeInstallFlowsUnderDevelopment: false,
+        genieRestApiV2Endpoint: 'https://genie.tado.com/api/v2',
+        ivarRestApiEndpoint: 'https://ivar.tado.com',
+        minderRestApiEndpoint: 'https://minder.tado.com/v1',
+        heimdallApiRestApiEndpoint: 'https://auth.tado.com/api',
+        gaTrackingId: 'UA-36131363-7',
+        oauth: {
+            clientApiEndpoint: 'https://my.tado.com/oauth/clients',
+            apiEndpoint: 'https://auth.tado.com/oauth',
+            clientId: 'tado-web-app',
+            clientSecret: 'wZaRN7rpjn3FoNyF5IFuxg9uMzYJcvOoQ8QWiIqS3hfk6gLhVlG57j5YNoZL2Rtc'
+        }
+    }
+};
+
+Getting a bearer token
+
+curl - s "https://auth.tado.com/oauth/token"
+    - d client_id = tado - web - app
+        - d grant_type = password
+            - d scope = home.user
+                - d username = "timothy_woodland@outlook.com"
+                    - d password = "@j-tLtrR8F"
+                        - d client_secret = wZaRN7rpjn3FoNyF5IFuxg9uMzYJcvOoQ8QWiIqS3hfk6gLhVlG57j5YNoZL2Rtc
+
+
+
+cpu_load_short, host = server01, region = us - west, value = 0.64 1434055562000000000"
