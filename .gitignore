@@ -1,0 +1,4 @@
+/conda_env/tado_data_collection
+.DS_Store
+.idea/
+__pycache__/
