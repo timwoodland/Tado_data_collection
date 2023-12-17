@@ -2,8 +2,15 @@
 import requests
 import numpy as np
 import pandas as pd
+from decouple import config
 from datetime import datetime
 from influxdb_client import InfluxDBClient
+
+# get env variables. Use local .env file if it exists
+
+TADO_USERNAME = config("TADO_USERNAME")
+TADO_PASSWORD = config("TADO_PASSWORD")
+TADO_CLIENT_SECRET = config("TADO_CLIENT_SECRET")
 
 # Set the time for Now
 
@@ -11,16 +18,12 @@ now = datetime.utcnow()
 
 # ### Get bearer token
 
-username = "timothy_woodland@outlook.com"
-password = "@j-tLtrR8F"
-client_secret = 'wZaRN7rpjn3FoNyF5IFuxg9uMzYJcvOoQ8QWiIqS3hfk6gLhVlG57j5YNoZL2Rtc'
-
 payload = {'client_id':'tado-web-app',
             'grant_type':'password',
             'scope':'home.user',
-            'username':username,
-            'password':password,
-            'client_secret':client_secret}
+            'username':TADO_USERNAME,
+            'password':TADO_PASSWORD,
+            'client_secret':TADO_CLIENT_SECRET}
 
 token_r = requests.post('https://auth.tado.com/oauth/token', params=payload)
 token = token_r.json()["access_token"]

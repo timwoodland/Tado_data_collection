@@ -17,3 +17,4 @@ urllib3==2.1.0
 wheel==0.42.0
 zope.interface==6.1
 numpy==1.26.2
+python-decouple==3.8
