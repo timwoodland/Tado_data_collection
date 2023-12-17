@@ -1,20 +1,19 @@
-Brotli @ file:///Users/runner/miniforge3/conda-bld/brotli-split_1695989934239/work
-certifi @ file:///home/conda/feedstock_root/build_artifacts/certifi_1700303426725/work/certifi
-charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-normalizer_1698833585322/work
+Brotli==1.1.0
+certifi==2023.11.17
+charset-normalizer==3.3.2
 DateTime==5.4
-idna @ file:///home/conda/feedstock_root/build_artifacts/idna_1701026962277/work
+idna==3.6
 influxdb-client==1.39.0
-numpy @ file:///Users/runner/miniforge3/conda-bld/numpy_1700874783284/work/dist/numpy-1.26.2-cp312-cp312-macosx_11_0_arm64.whl#sha256=383faf2d870650fe385a809f2e9c71086b2b2dc1a16c7005c91b047114ba218f
-pandas @ file:///Users/runner/miniforge3/conda-bld/pandas_1702057228657/work
-PySocks @ file:///home/conda/feedstock_root/build_artifacts/pysocks_1661604839144/work
-python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/python-dateutil_1626286286081/work
-pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1693930252784/work
+PySocks==1.7.1
+python-dateutil==2.8.2
+pytz==2023.3.post1
 reactivex==4.0.4
-requests @ file:///home/conda/feedstock_root/build_artifacts/requests_1684774241324/work
+requests==2.31.0
 setuptools==68.2.2
-six @ file:///home/conda/feedstock_root/build_artifacts/six_1620240208055/work
+six==1.16.0
 typing_extensions==4.9.0
-tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1680081134351/work
-urllib3 @ file:///home/conda/feedstock_root/build_artifacts/urllib3_1699933488691/work
+tzdata==2023.3
+urllib3==2.1.0
 wheel==0.42.0
 zope.interface==6.1
+numpy==1.26.2
