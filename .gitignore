@@ -3,4 +3,7 @@
 .idea/
 __pycache__/
 .env
-Notes.md
+/Notes.md
+.log
+/testing_files/
+/notes/
