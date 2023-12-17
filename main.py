@@ -11,6 +11,9 @@ from influxdb_client import InfluxDBClient
 TADO_USERNAME = config("TADO_USERNAME")
 TADO_PASSWORD = config("TADO_PASSWORD")
 TADO_CLIENT_SECRET = config("TADO_CLIENT_SECRET")
+INFLUX_URL = config("INFLUX_URL")
+INFLUX_DB = config("INFLUX_DB")
+INFLUX_ORG = config("INFLUX_ORG", default="")
 
 # Set the time for Now
 
@@ -118,10 +121,10 @@ weather_df = pd.DataFrame(data=[weather_data], index=[now], columns=weather_colu
 
 # Write Zone and Weather dataframes to Influx db
 
-db_url = "http://192.168.10.172:8086"
+db_url = INFLUX_URL
 with InfluxDBClient(url=db_url) as ifdb_client:
     with ifdb_client.write_api() as ifdb_write_client:
 
-        ifdb_write_client.write("testingdb", org="", record=weather_df, data_frame_measurement_name="tado_weather_data", data_frame_tag_columns=["source"])
+        ifdb_write_client.write(INFLUX_DB, org=INFLUX_ORG, record=weather_df, data_frame_measurement_name="tado_weather_data", data_frame_tag_columns=["source"])
 
-        ifdb_write_client.write("testingdb", org="", record=zone_df, data_frame_measurement_name="tado_zone_data", data_frame_tag_columns=["zone_id", "zone", "mode", "geo_override", "type", "status"])
+        ifdb_write_client.write(INFLUX_DB, org=INFLUX_ORG, record=zone_df, data_frame_measurement_name="tado_zone_data", data_frame_tag_columns=["zone_id", "zone", "mode", "geo_override", "type", "status"])

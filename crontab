@@ -1,1 +1,1 @@
-*/2 * * * * python3 /tado_data_collection/main.py >> /cron_logfile.log 2>&1
+*/2 * * * * stdbuf -o0 -e0 python3 -u /tado_data_collection/main.py > /dev/stdout
