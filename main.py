@@ -2,8 +2,18 @@
 import requests
 import numpy as np
 import pandas as pd
+from decouple import config
 from datetime import datetime
 from influxdb_client import InfluxDBClient
+
+# get env variables. Use local .env file if it exists
+
+TADO_USERNAME = config("TADO_USERNAME")
+TADO_PASSWORD = config("TADO_PASSWORD")
+TADO_CLIENT_SECRET = config("TADO_CLIENT_SECRET")
+INFLUX_URL = config("INFLUX_URL")
+INFLUX_DB = config("INFLUX_DB")
+INFLUX_ORG = config("INFLUX_ORG", default="")
 
 # Set the time for Now
 
@@ -11,16 +21,12 @@ now = datetime.utcnow()
 
 # ### Get bearer token
 
-username = "timothy_woodland@outlook.com"
-password = "@j-tLtrR8F"
-client_secret = 'wZaRN7rpjn3FoNyF5IFuxg9uMzYJcvOoQ8QWiIqS3hfk6gLhVlG57j5YNoZL2Rtc'
-
 payload = {'client_id':'tado-web-app',
             'grant_type':'password',
             'scope':'home.user',
-            'username':username,
-            'password':password,
-            'client_secret':client_secret}
+            'username':TADO_USERNAME,
+            'password':TADO_PASSWORD,
+            'client_secret':TADO_CLIENT_SECRET}
 
 token_r = requests.post('https://auth.tado.com/oauth/token', params=payload)
 token = token_r.json()["access_token"]
@@ -115,10 +121,10 @@ weather_df = pd.DataFrame(data=[weather_data], index=[now], columns=weather_colu
 
 # Write Zone and Weather dataframes to Influx db
 
-db_url = "http://192.168.10.172:8086"
+db_url = INFLUX_URL
 with InfluxDBClient(url=db_url) as ifdb_client:
     with ifdb_client.write_api() as ifdb_write_client:
 
-        ifdb_write_client.write("testingdb", org="", record=weather_df, data_frame_measurement_name="tado_weather_data", data_frame_tag_columns=["source"])
+        ifdb_write_client.write(INFLUX_DB, org=INFLUX_ORG, record=weather_df, data_frame_measurement_name="tado_weather_data", data_frame_tag_columns=["source"])
 
-        ifdb_write_client.write("testingdb", org="", record=zone_df, data_frame_measurement_name="tado_zone_data", data_frame_tag_columns=["zone_id", "zone", "mode", "geo_override", "type", "status"])
+        ifdb_write_client.write(INFLUX_DB, org=INFLUX_ORG, record=zone_df, data_frame_measurement_name="tado_zone_data", data_frame_tag_columns=["zone_id", "zone", "mode", "geo_override", "type", "status"])

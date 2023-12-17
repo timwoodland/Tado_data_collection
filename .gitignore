@@ -2,3 +2,8 @@
 .DS_Store
 .idea/
 __pycache__/
+.env
+/Notes.md
+.log
+/testing_files/
+/notes/
