@@ -1,5 +1,5 @@
 services:
-  tado-data-collecton:
+  tado-data-collecton3:
     build: .
     environment:
       - TADO_USERNAME=$TADO_USERNAME

@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM python:3.9-slim
 
 COPY main.py /tado_data_collection/
 COPY requirements.txt /tado_data_collection/
