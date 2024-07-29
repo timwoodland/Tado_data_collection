@@ -6,8 +6,6 @@ name: Docker
 # documentation.
 
 on:
-  schedule:
-    - cron: '42 21 * * *'
   push:
     branches: [ "release" ]
     # Publish semver tags as releases.
@@ -20,6 +18,7 @@ env:
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
   IMAGE_NAME: ${{ github.repository }}
+  tag: latest
 
 
 jobs:
