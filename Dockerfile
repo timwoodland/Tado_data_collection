@@ -7,4 +7,4 @@ RUN pip install -r /tado_data_collection/requirements.txt
 
 RUN pip install pandas==2.1.4
 
-CMD ["python", "./tado_data_collection/main.py"]
+CMD ["python", "/tado_data_collection/main.py"]
