@@ -1,5 +1,5 @@
 services:
-  tado-data-collecton3:
+  tado-data-collecton:
     build: .
     environment:
       - TADO_USERNAME=$TADO_USERNAME
@@ -7,3 +7,4 @@ services:
       - TADO_CLIENT_SECRET=$TADO_CLIENT_SECRET
       - INFLUX_URL=$INFLUX_URL
       - INFLUX_DB=$INFLUX_DB
+      - PYTHONUNBUFFERED=1

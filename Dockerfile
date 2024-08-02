@@ -1,10 +1,17 @@
 FROM python:3.9-slim
 
-COPY main.py /tado_data_collection/
-COPY requirements.txt /tado_data_collection/
+ENV PYTHONUNBUFFERED=1
 
-RUN pip install -r /tado_data_collection/requirements.txt
+RUN mkdir -p /tado_data_collection
+RUN mkdir -p /tado_data_collection/logs
+
+WORKDIR /tado_data_collection
+
+COPY main.py .
+COPY requirements.txt .
+
+RUN pip install -r requirements.txt
 
 RUN pip install pandas==2.1.4
 
-CMD ["python", "/tado_data_collection/main.py"]
+CMD ["python", "main.py"]
