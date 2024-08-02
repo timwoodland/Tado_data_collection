@@ -3,7 +3,7 @@ import requests
 import numpy as np
 import pandas as pd
 from decouple import config
-from datetime import datetime
+from datetime import datetime, timezone
 from influxdb_client import InfluxDBClient
 import schedule
 import time
@@ -22,7 +22,7 @@ def collect_tado_data(username, password, client_secret):
         
     # Set the time for Now
 
-    now = datetime.utcnow()
+    now = datetime.now(timezone.utc)
 
     # ### Get bearer token
 
